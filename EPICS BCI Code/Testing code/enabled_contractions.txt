@@ -1,0 +1,737 @@
+{
+    "about": {
+        "binary": "100000110000",
+        "braille": "⠁⠃",
+        "enabled": 0
+    },
+    "above": {
+        "binary": "100000110000111001",
+        "braille": "⠁⠃⠧",
+        "enabled": 1
+    },
+    "according": {
+        "binary": "100000100100",
+        "braille": "⠁⠉",
+        "enabled": 0
+    },
+    "across": {
+        "binary": "100000100100111010",
+        "braille": "⠁⠉⠗",
+        "enabled": 1
+    },
+    "after": {
+        "binary": "100000110100",
+        "braille": "⠁⠋",
+        "enabled": 1
+    },
+    "afternoon": {
+        "binary": "100000110100101110",
+        "braille": "⠁⠋⠝",
+        "enabled": 1
+    },
+    "afterward": {
+        "binary": "100000110100010111",
+        "braille": "⠁⠋⠺",
+        "enabled": 0
+    },
+    "again": {
+        "binary": "100000110110",
+        "braille": "⠁⠛",
+        "enabled": 0
+    },
+    "against": {
+        "binary": "100000110110001100",
+        "braille": "⠁⠛⠌",
+        "enabled": 0
+    },
+    "almost": {
+        "binary": "100000111000101100",
+        "braille": "⠁⠇⠍",
+        "enabled": 0
+    },
+    "already": {
+        "binary": "100000111000111010",
+        "braille": "⠁⠇⠗",
+        "enabled": 0
+    },
+    "also": {
+        "binary": "100000111000",
+        "braille": "⠁⠇",
+        "enabled": 0
+    },
+    "although": {
+        "binary": "100000111000100111",
+        "braille": "⠁⠇⠹",
+        "enabled": 0
+    },
+    "altogether": {
+        "binary": "100000111000011110",
+        "braille": "⠁⠇⠞",
+        "enabled": 0
+    },
+    "always": {
+        "binary": "100000111000010111",
+        "braille": "⠁⠇⠺",
+        "enabled": 0
+    },
+    "and": {
+        "binary": "111101",
+        "braille": "⠯",
+        "enabled": 0
+    },
+    "as": {
+        "binary": "101011",
+        "braille": "⠵",
+        "enabled": 0
+    },
+    "be": {
+        "binary": "011000",
+        "braille": "⠆",
+        "enabled": 0
+    },
+    "because": {
+        "binary": "011000100100",
+        "braille": "⠆⠉",
+        "enabled": 0
+    },
+    "before": {
+        "binary": "011000110100",
+        "braille": "⠆⠋",
+        "enabled": 0
+    },
+    "behind": {
+        "binary": "011000110010",
+        "braille": "⠆⠓",
+        "enabled": 0
+    },
+    "below": {
+        "binary": "011000111000",
+        "braille": "⠆⠇",
+        "enabled": 0
+    },
+    "beneath": {
+        "binary": "011000101110",
+        "braille": "⠆⠝",
+        "enabled": 0
+    },
+    "beside": {
+        "binary": "011000011100",
+        "braille": "⠆⠎",
+        "enabled": 0
+    },
+    "between": {
+        "binary": "011000011110",
+        "braille": "⠆⠞",
+        "enabled": 0
+    },
+    "beyond": {
+        "binary": "011000101111",
+        "braille": "⠆⠽",
+        "enabled": 1
+    },
+    "blind": {
+        "binary": "110000111000",
+        "braille": "⠃⠇",
+        "enabled": 1
+    },
+    "braille": {
+        "binary": "110000111010111000",
+        "braille": "⠃⠗⠇",
+        "enabled": 0
+    },
+    "but": {
+        "binary": "110000",
+        "braille": "⠃",
+        "enabled": 1
+    },
+    "can": {
+        "binary": "100100",
+        "braille": "⠉",
+        "enabled": 1
+    },
+    "cannot": {
+        "binary": "000111100100",
+        "braille": "⠸⠉",
+        "enabled": 0
+    },
+    "character": {
+        "binary": "000010100001",
+        "braille": "⠐⠡",
+        "enabled": 0
+    },
+    "child": {
+        "binary": "100001",
+        "braille": "⠡",
+        "enabled": 0
+    },
+    "children": {
+        "binary": "100001101110",
+        "braille": "⠡⠝",
+        "enabled": 0
+    },
+    "conceive": {
+        "binary": "010010100100111001",
+        "braille": "⠒⠉⠧",
+        "enabled": 0
+    },
+    "conceiving": {
+        "binary": "010010100100111001110110",
+        "braille": "⠒⠉⠧⠛",
+        "enabled": 0
+    },
+    "could": {
+        "binary": "100100100110",
+        "braille": "⠉⠙",
+        "enabled": 0
+    },
+    "day": {
+        "binary": "000010100110",
+        "braille": "⠐⠙",
+        "enabled": 0
+    },
+    "deceive": {
+        "binary": "100110100100111001",
+        "braille": "⠙⠉⠧",
+        "enabled": 0
+    },
+    "deceiving": {
+        "binary": "100110100100111001110110",
+        "braille": "⠙⠉⠧⠛",
+        "enabled": 0
+    },
+    "declare": {
+        "binary": "100110100100111000",
+        "braille": "⠙⠉⠇",
+        "enabled": 0
+    },
+    "declaring": {
+        "binary": "100110100100111000110110",
+        "braille": "⠙⠉⠇⠛",
+        "enabled": 0
+    },
+    "do": {
+        "binary": "100110",
+        "braille": "⠙",
+        "enabled": 0
+    },
+    "either": {
+        "binary": "100010010100",
+        "braille": "⠑⠊",
+        "enabled": 0
+    },
+    "enough": {
+        "binary": "010001",
+        "braille": "⠢",
+        "enabled": 0
+    },
+    "ever": {
+        "binary": "000010100010",
+        "braille": "⠐⠑",
+        "enabled": 0
+    },
+    "every": {
+        "binary": "100010",
+        "braille": "⠑",
+        "enabled": 0
+    },
+    "father": {
+        "binary": "000010110100",
+        "braille": "⠐⠋",
+        "enabled": 0
+    },
+    "first": {
+        "binary": "110100001100",
+        "braille": "⠋⠌",
+        "enabled": 0
+    },
+    "for": {
+        "binary": "111111",
+        "braille": "⠿",
+        "enabled": 0
+    },
+    "friend": {
+        "binary": "110100111010",
+        "braille": "⠋⠗",
+        "enabled": 0
+    },
+    "from": {
+        "binary": "110100",
+        "braille": "⠋",
+        "enabled": 0
+    },
+    "go": {
+        "binary": "110110",
+        "braille": "⠛",
+        "enabled": 0
+    },
+    "good": {
+        "binary": "110110100110",
+        "braille": "⠛⠙",
+        "enabled": 0
+    },
+    "great": {
+        "binary": "110110111010011110",
+        "braille": "⠛⠗⠞",
+        "enabled": 0
+    },
+    "had": {
+        "binary": "000111110010",
+        "braille": "⠸⠓",
+        "enabled": 0
+    },
+    "have": {
+        "binary": "110010",
+        "braille": "⠓",
+        "enabled": 0
+    },
+    "here": {
+        "binary": "000010110010",
+        "braille": "⠐⠓",
+        "enabled": 0
+    },
+    "herself": {
+        "binary": "110010110111110100",
+        "braille": "⠓⠻⠋",
+        "enabled": 0
+    },
+    "him": {
+        "binary": "110010101100",
+        "braille": "⠓⠍",
+        "enabled": 0
+    },
+    "himself": {
+        "binary": "110010101100110100",
+        "braille": "⠓⠍⠋",
+        "enabled": 0
+    },
+    "his": {
+        "binary": "011001",
+        "braille": "⠦",
+        "enabled": 0
+    },
+    "immediate": {
+        "binary": "010100101100101100",
+        "braille": "⠊⠍⠍",
+        "enabled": 0
+    },
+    "in": {
+        "binary": "001010",
+        "braille": "⠔",
+        "enabled": 0
+    },
+    "it": {
+        "binary": "101101",
+        "braille": "⠭",
+        "enabled": 0
+    },
+    "its": {
+        "binary": "101101011100",
+        "braille": "⠭⠎",
+        "enabled": 0
+    },
+    "itself": {
+        "binary": "101101110100",
+        "braille": "⠭⠋",
+        "enabled": 0
+    },
+    "just": {
+        "binary": "010110",
+        "braille": "⠚",
+        "enabled": 0
+    },
+    "know": {
+        "binary": "000010101000",
+        "braille": "⠐⠅",
+        "enabled": 0
+    },
+    "knowledge": {
+        "binary": "101000",
+        "braille": "⠅",
+        "enabled": 0
+    },
+    "letter": {
+        "binary": "111000111010",
+        "braille": "⠇⠗",
+        "enabled": 0
+    },
+    "like": {
+        "binary": "111000",
+        "braille": "⠇",
+        "enabled": 0
+    },
+    "little": {
+        "binary": "111000111000",
+        "braille": "⠇⠇",
+        "enabled": 0
+    },
+    "lord": {
+        "binary": "000010111000",
+        "braille": "⠐⠇",
+        "enabled": 0
+    },
+    "many": {
+        "binary": "000111101100",
+        "braille": "⠸⠍",
+        "enabled": 0
+    },
+    "more": {
+        "binary": "101100",
+        "braille": "⠍",
+        "enabled": 0
+    },
+    "mother": {
+        "binary": "000010101100",
+        "braille": "⠐⠍",
+        "enabled": 0
+    },
+    "much": {
+        "binary": "101100100001",
+        "braille": "⠍⠡",
+        "enabled": 0
+    },
+    "must": {
+        "binary": "101100001100",
+        "braille": "⠍⠌",
+        "enabled": 0
+    },
+    "myself": {
+        "binary": "101100101111110100",
+        "braille": "⠍⠽⠋",
+        "enabled": 0
+    },
+    "name": {
+        "binary": "000010101110",
+        "braille": "⠐⠝",
+        "enabled": 0
+    },
+    "necessary": {
+        "binary": "101110100010100100",
+        "braille": "⠝⠑⠉",
+        "enabled": 0
+    },
+    "neither": {
+        "binary": "101110100010010100",
+        "braille": "⠝⠑⠊",
+        "enabled": 0
+    },
+    "not": {
+        "binary": "101110",
+        "braille": "⠝",
+        "enabled": 0
+    },
+    "of": {
+        "binary": "111011",
+        "braille": "⠷",
+        "enabled": 0
+    },
+    "one": {
+        "binary": "000010101010",
+        "braille": "⠐⠕",
+        "enabled": 0
+    },
+    "oneself": {
+        "binary": "000010101010110100",
+        "braille": "⠐⠕⠋",
+        "enabled": 0
+    },
+    "ourselves": {
+        "binary": "110011111010111001011100",
+        "braille": "⠳⠗⠧⠎",
+        "enabled": 0
+    },
+    "out": {
+        "binary": "110011",
+        "braille": "⠳",
+        "enabled": 0
+    },
+    "paid": {
+        "binary": "111100100110",
+        "braille": "⠏⠙",
+        "enabled": 0
+    },
+    "part": {
+        "binary": "000010111100",
+        "braille": "⠐⠏",
+        "enabled": 0
+    },
+    "people": {
+        "binary": "111100",
+        "braille": "⠏",
+        "enabled": 0
+    },
+    "perceive": {
+        "binary": "111100110111100100111001",
+        "braille": "⠏⠻⠉⠧",
+        "enabled": 0
+    },
+    "perceiving": {
+        "binary": "111100110111100100111001110110",
+        "braille": "⠏⠻⠉⠧⠛",
+        "enabled": 0
+    },
+    "perhaps": {
+        "binary": "111100110111110010",
+        "braille": "⠏⠻⠓",
+        "enabled": 0
+    },
+    "question": {
+        "binary": "000010111110",
+        "braille": "⠐⠟",
+        "enabled": 1
+    },
+    "quick": {
+        "binary": "111110101000",
+        "braille": "⠟⠅",
+        "enabled": 0
+    },
+    "quite": {
+        "binary": "111110",
+        "braille": "⠟",
+        "enabled": 0
+    },
+    "rather": {
+        "binary": "111010",
+        "braille": "⠗",
+        "enabled": 0
+    },
+    "receive": {
+        "binary": "111010100100111001",
+        "braille": "⠗⠉⠧",
+        "enabled": 0
+    },
+    "receiving": {
+        "binary": "111010100100111001110110",
+        "braille": "⠗⠉⠧⠛",
+        "enabled": 0
+    },
+    "rejoice": {
+        "binary": "111010010110100100",
+        "braille": "⠗⠚⠉",
+        "enabled": 0
+    },
+    "rejoicing": {
+        "binary": "111010010110100100110110",
+        "braille": "⠗⠚⠉⠛",
+        "enabled": 0
+    },
+    "right": {
+        "binary": "000010111010",
+        "braille": "⠐⠗",
+        "enabled": 0
+    },
+    "said": {
+        "binary": "011100100110",
+        "braille": "⠎⠙",
+        "enabled": 0
+    },
+    "shall": {
+        "binary": "100101",
+        "braille": "⠩",
+        "enabled": 0
+    },
+    "should": {
+        "binary": "100101100110",
+        "braille": "⠩⠙",
+        "enabled": 0
+    },
+    "so": {
+        "binary": "011100",
+        "braille": "⠎",
+        "enabled": 0
+    },
+    "some": {
+        "binary": "000010011100",
+        "braille": "⠐⠎",
+        "enabled": 0
+    },
+    "spirit": {
+        "binary": "000111011100",
+        "braille": "⠸⠎",
+        "enabled": 0
+    },
+    "still": {
+        "binary": "001100",
+        "braille": "⠌",
+        "enabled": 0
+    },
+    "such": {
+        "binary": "011100100001",
+        "braille": "⠎⠡",
+        "enabled": 0
+    },
+    "that": {
+        "binary": "011110",
+        "braille": "⠞",
+        "enabled": 0
+    },
+    "the": {
+        "binary": "011101",
+        "braille": "⠮",
+        "enabled": 0
+    },
+    "their": {
+        "binary": "000111011101",
+        "braille": "⠸⠮",
+        "enabled": 0
+    },
+    "themselves": {
+        "binary": "011101101100111001011100",
+        "braille": "⠮⠍⠧⠎",
+        "enabled": 0
+    },
+    "there": {
+        "binary": "000010011101",
+        "braille": "⠐⠮",
+        "enabled": 0
+    },
+    "these": {
+        "binary": "000110011101",
+        "braille": "⠘⠮",
+        "enabled": 0
+    },
+    "this": {
+        "binary": "100111",
+        "braille": "⠹",
+        "enabled": 0
+    },
+    "those": {
+        "binary": "000110100111",
+        "braille": "⠘⠹",
+        "enabled": 0
+    },
+    "through": {
+        "binary": "000010100111",
+        "braille": "⠐⠹",
+        "enabled": 0
+    },
+    "thyself": {
+        "binary": "100111101111110100",
+        "braille": "⠹⠽⠋",
+        "enabled": 0
+    },
+    "time": {
+        "binary": "000010011110",
+        "braille": "⠐⠞",
+        "enabled": 0
+    },
+    "today": {
+        "binary": "011110100110",
+        "braille": "⠞⠙",
+        "enabled": 0
+    },
+    "together": {
+        "binary": "011110110110111010",
+        "braille": "⠞⠛⠗",
+        "enabled": 0
+    },
+    "tomorrow": {
+        "binary": "011110101100",
+        "braille": "⠞⠍",
+        "enabled": 0
+    },
+    "tonight": {
+        "binary": "011110101110",
+        "braille": "⠞⠝",
+        "enabled": 0
+    },
+    "under": {
+        "binary": "000010101001",
+        "braille": "⠐⠥",
+        "enabled": 0
+    },
+    "upon": {
+        "binary": "000110101001",
+        "braille": "⠘⠥",
+        "enabled": 0
+    },
+    "us": {
+        "binary": "101001",
+        "braille": "⠥",
+        "enabled": 0
+    },
+    "very": {
+        "binary": "111001",
+        "braille": "⠧",
+        "enabled": 0
+    },
+    "was": {
+        "binary": "001011",
+        "braille": "⠴",
+        "enabled": 0
+    },
+    "were": {
+        "binary": "011011",
+        "braille": "⠶",
+        "enabled": 0
+    },
+    "where": {
+        "binary": "000010100011",
+        "braille": "⠐⠱",
+        "enabled": 0
+    },
+    "which": {
+        "binary": "100011",
+        "braille": "⠱",
+        "enabled": 0
+    },
+    "whose": {
+        "binary": "000110100011",
+        "braille": "⠘⠱",
+        "enabled": 0
+    },
+    "will": {
+        "binary": "010111",
+        "braille": "⠺",
+        "enabled": 0
+    },
+    "with": {
+        "binary": "011111",
+        "braille": "⠾",
+        "enabled": 0
+    },
+    "word": {
+        "binary": "000110010111",
+        "braille": "⠘⠺",
+        "enabled": 0
+    },
+    "work": {
+        "binary": "000010010111",
+        "braille": "⠐⠺",
+        "enabled": 0
+    },
+    "world": {
+        "binary": "000111010111",
+        "braille": "⠸⠺",
+        "enabled": 0
+    },
+    "would": {
+        "binary": "010111100110",
+        "braille": "⠺⠙",
+        "enabled": 0
+    },
+    "you": {
+        "binary": "101111",
+        "braille": "⠽",
+        "enabled": 0
+    },
+    "young": {
+        "binary": "000010101111",
+        "braille": "⠐⠽",
+        "enabled": 0
+    },
+    "your": {
+        "binary": "101111111010",
+        "braille": "⠽⠗",
+        "enabled": 0
+    },
+    "yourself": {
+        "binary": "101111111010110100",
+        "braille": "⠽⠗⠋",
+        "enabled": 0
+    },
+    "yourselves": {
+        "binary": "101111111010111001011100",
+        "braille": "⠽⠗⠧⠎",
+        "enabled": 0
+    }
+}

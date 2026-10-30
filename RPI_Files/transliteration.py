@@ -78,9 +78,9 @@ def TTS(word, voice):
     try:
         with wave.open("output.wav", "wb") as f:
             voice.synthesize_wav(word, f, syn_config=syn)
-            subprocess.run('aplay output.wav', shell = True)
-    except: 
-        pass    
+        subprocess.run(['aplay', 'output.wav'], check = True)
+    except Exception as e: 
+        print(f"TTS error: {e}") 
         
 #model = "en_US-amy-medium.onnx"
 currentLine = 0
@@ -91,6 +91,7 @@ subprocess.run('aplay ready.wav', shell = True)
 
 hallEffect = [DigitalOutputDevice(f"BOARD{pin}", active_high = True) for pin in [31, 33, 37]]
 mux_out = DigitalInputDevice(f"BOARD36", pull_up = True)
+
 on_off = Button(23, bounce_time=0.1)
 #pair = Button(24,bounce_time=0.1)
 
@@ -104,10 +105,11 @@ current_line = 0
 lastWord = ""
 while True:
     output = HallEffectRead(hallEffect, mux_out)
+
     newline = int(output[4])
     space = int(output[6])
     keys = output[5] + output[7] + output[3] + output[2] + output[1] + output[0]
-	#keys = output[3] + output[2] + output[1] + output[5:8]
+    
     if space:
         space_press = 1
         currentBinary = keys

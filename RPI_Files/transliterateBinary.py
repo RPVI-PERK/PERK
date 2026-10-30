@@ -17,10 +17,10 @@ def load_enabled_contractions(json_path='enabled_contractions.txt'):
         return set()
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
-            contractions_data = json.load(f)
+            contraction_data = json.load(f)
             return {
-                word for word, details in contractions_data.items()
-                if details.get("enabled", 1) == 1
+                word for word, details in contraction_data.items()
+                if details.get("enabled", 0) == 1
             }
     except Exception:
         return set()
@@ -75,92 +75,144 @@ def transliterateBin(inputB):
             global translatedOutput
             global i
             global lastOutput
-            if whatLong in brailleLib.keys():
-                for possibleOut in brailleLib[whatLong]:
-                    #print(possibleOut)
-                    if "./" in possibleOut:
-                        translatedOutput += possibleOut.replace("^", "")
-                        lastOutput = possibleOut.replace("^", "")
-                        i += howLong
-                        translated = True
-                    if "_" in possibleOut:
-                        contraction_word = possibleOut.replace("_","")
 
-                        if contraction_word not in enabled_contractions:
-                           continue
+            if translated:
+                return
 
-                        if i > 0 and i < len(inputarr) - 1:
-                            expand = False
-                            if (inputarr[i - 1] == "000000") and (inputarr[i + howLong] == "000000"):
-                                expand = True
-                            if (inputarr[i + howLong] in brailleLib.keys()):
-                                if (inputarr[i - 1] == "000000" or "./" in lastOutput) and \
-                                    (not brailleLib[inputarr[i + howLong]][0]
-                                     .replace("^", "")
-                                     .replace("_", "")
-                                     .isalnum()):
-                                    expand = True
-                            if (expand):
-                                translatedOutput += contraction_word
-                                lastOutput = contraction_word
-                                i += howLong
-                                translated = True
-                    if possibleOut.startswith('^') and possibleOut.endswith('^') and not translated:
-                        if i > 0 and i < len(inputarr) - 1:
-                            if inputarr[i - 1] != "000000" and inputarr[i + howLong] != "000000" and not "./" in lastOutput:
-                                translatedOutput += possibleOut.replace("^", "")
-                                lastOutput = possibleOut.replace("^", "")
-                                i += howLong
-                                translated = True
-                            else:
-                                continue
-                    if possibleOut.startswith('^') and not translated:
-                        if i > 0:
-                            if inputarr[i - 1] != "000000":
-                                translatedOutput += possibleOut.replace("^", "")
-                                lastOutput = possibleOut.replace("^", "")
-                                i += howLong
-                                translated = True
-                    if possibleOut.endswith('^') and not translated:
-                        if i < len(inputarr) - 1:
-                            if inputarr[i + howLong] != "000000":
-                                translatedOutput += possibleOut.replace("^", "")
-                                lastOutput = possibleOut.replace("^", "")
-                                i += howLong
-                                translated = True
-                if not translated and howLong == 5:
-                    if fourLong not in brailleLib.keys() and threeLong not in brailleLib.keys() and twoLong not in brailleLib.keys() and oneLong not in brailleLib.keys():  
-                        translatedOutput += brailleLib[whatLong][0]
-                        lastOutput = brailleLib[whatLong][0]
+            if not whatLong or whatLong not in brailleLib:
+                return
+
+            
+            for possibleOut in brailleLib[whatLong]:
+                
+                #WHole word contraction
+
+                if possibleOut.startswith("_") and possibleOut.endswith("_"):
+                    contraction_word = possibleOut[1:-1]
+
+                    # Must be enabled.
+                    if contraction_word not in enabled_contractions:
+                        continue
+
+                    # Must be a complete word:
+                    # blank before + blank after.
+                    if (
+                        i > 0
+                        and i + howLong < len(inputarr)
+                        and inputarr[i - 1] == "000000"
+                        and inputarr[i + howLong] == "000000"
+                    ):
+                        translatedOutput += contraction_word
+                        lastOutput = contraction_word
                         i += howLong
                         translated = True
-                if not translated and howLong == 4:
-                    if threeLong not in brailleLib.keys() and twoLong not in brailleLib.keys() and oneLong not in brailleLib.keys():  
-                        translatedOutput += brailleLib[whatLong][0]
-                        lastOutput = brailleLib[whatLong][0]
-                        i += howLong
-                        translated = True
-                if not translated and howLong == 3:
-                    if twoLong not in brailleLib.keys() and oneLong not in brailleLib.keys():  
-                        translatedOutput += brailleLib[whatLong][0]
-                        lastOutput = brailleLib[whatLong][0]
-                        i += howLong
-                        translated = True
-                if not translated and howLong == 2:
-                    if oneLong not in brailleLib.keys():  
-                        translatedOutput += brailleLib[whatLong][0]
-                        lastOutput = brailleLib[whatLong][0]
-                        i += howLong
-                        translated = True
-                if not translated and howLong == 1:
-                    if ("." in brailleLib[oneLong] or "," in brailleLib[oneLong] or "!" in brailleLib[oneLong]):
-                        translatedOutput += brailleLib[oneLong][1]
-                        lastOutput = brailleLib[oneLong][1]
-                    else:
-                        translatedOutput += brailleLib[oneLong][0]
-                        lastOutput = brailleLib[oneLong][0]
-                    i += 1
+                        return
+
+                    continue
+
+                # Special ./ output
+                
+                if "./" in possibleOut:
+                    output = possibleOut.replace("^", "")
+                    translatedOutput += possibleOut
+                    lastOutput = possibleOut
+                    i += howLong
                     translated = True
+                    return
+
+                # ^xxx^ = must be inside a word
+        
+                if possibleOut.startswith('^') and possibleOut.endswith('^'):
+                    if (
+                        i > 0
+                        and i + howLong < len(inputarr)
+                        and inputarr[i - 1] != "000000"
+                        and inputarr[i + howLong] != "000000"
+                        and "./" not in lastOutput
+                    ):
+                        output = possibleOut.replace("^", "")
+                        translatedOutput += output
+                        lastOutput = output
+                        i += howLong
+                        translated = True
+                        return
+
+                    continue
+
+                # ^xxx = must NOT be at beginning of word
+
+                if possibleOut.startswith('^'):
+                    if i > 0 and inputarr[i - 1] != "000000":
+                        output = possibleOut.replace("^", "")
+                        translatedOutput += output
+                        lastOutput = output
+                        i += howLong
+                        translated = True
+                        return
+
+                    continue
+
+                # xxx^ = must NOT be at end of word
+
+                if possibleOut.endswith('^'):
+                    if (
+                        i + howLong < len(inputarr)
+                        and inputarr[i + howLong] != "000000"
+                    ):
+                        output = possibleOut.replace("^", "")
+                        translatedOutput += output
+                        lastOutput = output
+                        i += howLong
+                        translated = True
+                        return
+
+                    continue
+
+            # Normal fallback
+
+            if howLong == 5:
+                shorter_exists = (
+                    fourLong in brailleLib
+                    or threeLong in brailleLib
+                    or twoLong in brailleLib
+                    or oneLong in brailleLib
+                )
+
+            elif howLong == 4:
+                shorter_exists = (
+                    threeLong in brailleLib
+                    or twoLong in brailleLib
+                    or oneLong in brailleLib
+                )
+
+            elif howLong == 3:
+                shorter_exists = (
+                    twoLong in brailleLib
+                    or oneLong in brailleLib
+                )
+
+            elif howLong == 2:
+                shorter_exists = oneLong in brailleLib
+
+            else:
+                shorter_exists = False
+
+            if not translated and not shorter_exists:
+                output = brailleLib[whatLong][0]
+
+                # Preserve your punctuation special case.
+                if howLong == 1 and any(
+                    punctuation in brailleLib[oneLong]
+                    for punctuation in [".", ",", "!"]
+                ):
+                    output = brailleLib[oneLong][1]
+
+                translatedOutput += output
+                lastOutput = output
+                i += howLong
+                translated = True
+
+
         findOutput(fiveLong, 5)
         findOutput(fourLong, 4)
         findOutput(threeLong, 3)
@@ -200,6 +252,7 @@ def transliterateBin(inputB):
     translatedOutput = translatedOutput.strip()
     f_out = open('transliterateOutput.txt', 'a')
     f_out.write(translatedOutput)
+    print(translatedOutput)
     f_out.close()
     #print(translatedOutput.split())
     if translatedOutput.split(): 

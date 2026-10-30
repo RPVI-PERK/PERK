@@ -16,7 +16,7 @@ def hallEffectRefresh():
     for i in range(8):
         for j in range(3):
             hallEffect[j].on() if (i >> j) & 1 else hallEffect[j].off()
-        time.sleep(0.001)
+        time.sleep(0.005)
         
         outputnum.append(str(output.value))
        # outputnum.append(str(io.value))

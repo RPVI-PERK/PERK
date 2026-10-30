@@ -306,7 +306,11 @@ class IndividualBraillerViewBase:
                 new_settings = f.read()
 
             # Send file to home directory of client Raspberry Pi
-            cmd = f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} 'echo {shlex.quote(new_settings)} > ~/enabled_contractions.txt'"
+            cmd = (
+                f"sshpass -p 'perk' scp -o StrictHostKeyChecking=no " 
+                f"{shlex.quote(self.enabled_contractions_path)} "
+                f"perk@{shlex.quote(self.ip)}:~/RPI_Files/enabled_contractions.txt"
+            )
             
             self.run_command(cmd)
 
@@ -315,18 +319,20 @@ class IndividualBraillerViewBase:
     def simulate_brailler_output(self):
         def fetch_worker():
             
-            cmd = f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} 'cat ~/transliterateOutput.txt; echo '---SEP---'; cat ~/tempbin.txt'"
+            cmd = (
+                f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no "
+                f"perk@{self.ip} "
+                f"'cat ~/transliterateOutput.txt; printf \"\\n---SEP---\\n\"; cat ~/tempbin.txt'"
+            )
+            
             result = self.run_command(cmd)
             print(result)
+
             
             if result and '---SEP---' in result:
                 live_part, braille_part = result.split('---SEP---')
                 self.text_content = live_part.strip()
                 self.braille_content = braille_part.strip()
-
-            if result is None:
-                return
-
 
             self.after_id1 = self.root.after(1000, self.simulate_brailler_output)
 
@@ -367,13 +373,13 @@ class IndividualBraillerViewBase:
         if not confirm:
             return #user clicked no
         
-        self.run_command(f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} '> ~/transliterateOutput.txt'")
-        self.run_command(f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} '> ~/tempbin.txt'")
+        self.run_command(f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} '> ~/RPI_Files/transliterateOutput.txt'")
+        self.run_command(f"sshpass -p 'perk' ssh -o StrictHostKeyChecking=no perk@{self.ip} '> ~/RPI_Files/tempbin.txt'")
 
         reset_client = (
             "pkill -f '[t]ransliteration.py' || true; "
-            ": > ~/transliterateOutput.txt; "
-            ": > ~/tempbin.txt; "
+            ": > ~/RPI_Files/transliterateOutput.txt; "
+            ": > ~/RPI_Files/tempbin.txt; "
             "cd /home/perk && "
             "nohup ./pyperk/bin/python transliteration.py "
             ">/tmp/perk-transliteration.log 2>&1 &"

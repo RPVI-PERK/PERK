@@ -39,5 +39,9 @@
     "Diana's Brailler": {
         "ip": "10.42.0.182",
         "status": "UNREACHABLE"
+    },
+    "Unknown": {
+        "ip": "10.42.0.220",
+        "status": "UNREACHABLE"
     }
 }
