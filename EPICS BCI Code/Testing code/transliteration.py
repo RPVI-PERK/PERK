@@ -93,7 +93,7 @@ def load_enabled_contractions(json_path='EPICS BCI Code/Testing code/enabled_con
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
             contraction_data = json.load(f)
-            print(contraction_data)
+            # print(contraction_data)
             return {
                 word for word, details in contraction_data.items()
                 if details.get("enabled", 0) == 1
@@ -160,9 +160,9 @@ while True:
 
         i = 0
         while i < len(binArray[current_line]):
-            print(f"{binArray[current_line][i:(i+6)]} ")
+            print(f"{binArray[current_line][i:(i+6)]} ",  end='')
             i += 6
-       
+        print()
 
         with open("tempbin.txt", 'w') as f:
             with open("transliterateOutput.txt", "w") as f_t:

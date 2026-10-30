@@ -65,12 +65,9 @@ def findOutput(whatLong, howLong, fourLong, threeLong, twoLong, oneLong, enabled
         
         if "./" in possibleOut:
             output = possibleOut.replace("^", "")
-
-            if output not in enabled_contractions:
-                continue
             
-            translatedOutput += possibleOut
-            lastOutput = possibleOut
+            translatedOutput += output
+            lastOutput = output
             i += howLong
             translated = True
             return
@@ -230,8 +227,9 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
         if not translated:
             i += 1
     
-    print(translatedOutput)
+    # print(translatedOutput)
     translatedOutput = translatedOutput.replace("_", "")
+    # print(translatedOutput)
     
     while("./" in translatedOutput):
             if "./capital letter" in translatedOutput:
@@ -267,7 +265,8 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
     #print(translatedOutput.split())
 
     #Returned last word is used for TTS, so that the user can hear the last word they typed
-    if translatedOutput.split(): 
-        print(translatedOutput.split()[-1])
+    # if translatedOutput.split(): 
+    #     # print(translatedOutput.split()[-1])
+
     if translatedOutput:
         return translatedOutput.split()[-1] # Return last "word"
