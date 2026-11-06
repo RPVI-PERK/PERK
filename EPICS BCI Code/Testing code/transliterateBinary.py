@@ -47,7 +47,7 @@ def findOutput(whatLong, howLong, fourLong, threeLong, twoLong, oneLong, enabled
             if (
                 i > 0
                 and i + howLong < len(inputarr)
-                and inputarr[i - 1] == "000000"
+                and inputarr[i - 1] == "000000" or "capital" in lastOutput
                 and inputarr[i + howLong] == "000000"
             ):
                 if contraction_word not in enabled_contractions:
@@ -74,7 +74,7 @@ def findOutput(whatLong, howLong, fourLong, threeLong, twoLong, oneLong, enabled
 
         # ^xxx^ = must be inside a word
 
-        if possibleOut.startswith('^') and possibleOut.endswith('^'):
+        if possibleOut.startswith('^') or possibleOut.endswith('^'):
             if (
                 i > 0
                 and i + howLong < len(inputarr)
@@ -243,8 +243,12 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
                 translatedOutput = translatedOutput.replace("./capital word", "", 1)
             if "./capital passage" in translatedOutput:
                 capitalPassage_start = translatedOutput.find("./capital passage") + 17
-                capitalPassage_end = translatedOutput[capitalPassage_start:].find("./capital terminator") + capitalPassage_start
-                translatedOutput = translatedOutput[:capitalPassage_start] + translatedOutput[capitalPassage_start:capitalPassage_end].upper() + translatedOutput[capitalPassage_end:]
+                if translatedOutput[capitalPassage_start:].find("./capital terminator") != -1:
+                    capitalPassage_end = translatedOutput[capitalPassage_start:].find("./capital terminator") + capitalPassage_start
+                    translatedOutput = translatedOutput[:capitalPassage_start] + translatedOutput[capitalPassage_start:capitalPassage_end].upper() + translatedOutput[capitalPassage_end:]
+                else:
+                    translatedOutput = translatedOutput[:capitalPassage_start] + translatedOutput[capitalPassage_start:].upper()
+                
                 translatedOutput = translatedOutput.replace("./capital passage", "", 1)
                 translatedOutput = translatedOutput.replace("./capital terminator", "", 1)
             if "./numeric indicator" in  translatedOutput:
@@ -259,6 +263,7 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
     translatedOutput = translatedOutput.strip()
     f_out = open('transliterateOutput.txt', 'a')
     f_out.write(translatedOutput)
+    print("\n", end='')
     print(translatedOutput)
     f_out.close()
     

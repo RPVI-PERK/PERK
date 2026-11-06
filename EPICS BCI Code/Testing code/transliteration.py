@@ -162,7 +162,7 @@ while True:
         while i < len(binArray[current_line]):
             print(f"{binArray[current_line][i:(i+6)]} ",  end='')
             i += 6
-        print()
+        
 
         with open("tempbin.txt", 'w') as f:
             with open("transliterateOutput.txt", "w") as f_t:
