@@ -47,7 +47,7 @@ def findOutput(whatLong, howLong, fourLong, threeLong, twoLong, oneLong, enabled
             if (
                 i > 0
                 and i + howLong < len(inputarr)
-                and inputarr[i - 1] == "000000" or "capital" in lastOutput
+                and (inputarr[i - 1] == "000000" or "capital" in lastOutput)
                 and inputarr[i + howLong] == "000000"
             ):
                 if contraction_word not in enabled_contractions:
@@ -232,6 +232,8 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
     # print(translatedOutput)
     
     while("./" in translatedOutput):
+            #print("start:  ", translatedOutput)
+            before = translatedOutput
             if "./capital letter" in translatedOutput:
                 capitalLetter_i = translatedOutput.find("./capital letter") + 16
                 translatedOutput = translatedOutput[:capitalLetter_i] + translatedOutput[capitalLetter_i].upper() + translatedOutput[capitalLetter_i + 1:]
@@ -252,12 +254,16 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
                 translatedOutput = translatedOutput.replace("./capital passage", "", 1)
                 translatedOutput = translatedOutput.replace("./capital terminator", "", 1)
             if "./numeric indicator" in  translatedOutput:
-                a_to_n = {"a" : "1", "b" : "2", "c" : "3", "d" : "4", "e" : "5", "f" : "6", "g" : "7", "h" : "8", "i" : "9"}
+                a_to_n = {"a" : "1", "b" : "2", "c" : "3", "d" : "4", "e" : "5", "f" : "6", "g" : "7", "h" : "8", "i" : "9", "j" : "0"}
                 number_i = translatedOutput.find("./numeric indicator") + 19
                 while (translatedOutput[number_i] in a_to_n.keys()):
                     translatedOutput = translatedOutput[:number_i] + a_to_n[translatedOutput[number_i]] + translatedOutput[number_i + 1:]
                     number_i += 1
                 translatedOutput = translatedOutput.replace("./numeric indicator", "", 1)
+            # stop if nothing changed, to avoid an infinite loop
+            #print("end:  ", translatedOutput)
+            if translatedOutput == before:
+                break
 
 
     translatedOutput = translatedOutput.strip()
