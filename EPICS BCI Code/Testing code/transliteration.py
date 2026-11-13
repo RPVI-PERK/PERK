@@ -104,7 +104,8 @@ def load_enabled_contractions(json_path='EPICS BCI Code/Testing code/enabled_con
 enabled_contractions = load_enabled_contractions()
 print(enabled_contractions)
 
-with open('EPICS BCI Code/Testing code/brailleLib.txt', 'r') as f:
+with open('EPICS BCI Code/Testing code/brailleLibUEB.txt', 'r') as f:
+#with open('EPICS BCI Code/Testing code/brailleLib.txt', 'r') as f:
     data = f.read()
 brailleLib = ast.literal_eval(data)
 

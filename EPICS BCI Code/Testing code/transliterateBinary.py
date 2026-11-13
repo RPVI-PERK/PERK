@@ -234,6 +234,7 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
     while("./" in translatedOutput):
             #print("start:  ", translatedOutput)
             before = translatedOutput
+            # Capital indicators: letter, word, passage + terminator
             if "./capital letter" in translatedOutput:
                 capitalLetter_i = translatedOutput.find("./capital letter") + 16
                 translatedOutput = translatedOutput[:capitalLetter_i] + translatedOutput[capitalLetter_i].upper() + translatedOutput[capitalLetter_i + 1:]
@@ -253,6 +254,27 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
                 
                 translatedOutput = translatedOutput.replace("./capital passage", "", 1)
                 translatedOutput = translatedOutput.replace("./capital terminator", "", 1)
+            # Italic indicators (Markdown *text*)
+            if "./italic symbol" in translatedOutput:
+                italicSymbol_i = translatedOutput.find("./italic symbol") + 15
+                translatedOutput = translatedOutput[:italicSymbol_i] + "*" + translatedOutput[italicSymbol_i] + "*" + translatedOutput[italicSymbol_i + 1:]
+                translatedOutput = translatedOutput.replace("./italic symbol", "", 1)
+            if "./italic word" in translatedOutput:
+                italicWord_start = translatedOutput.find("./italic word") + 13
+                italicWord_end = translatedOutput.find(" ", italicWord_start)
+                if italicWord_end == -1:
+                    italicWord_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:italicWord_start] + "*" + translatedOutput[italicWord_start:italicWord_end] + "*" + translatedOutput[italicWord_end:]
+                translatedOutput = translatedOutput.replace("./italic word", "", 1)
+            if "./italic passage" in translatedOutput:
+                italicPassage_start = translatedOutput.find("./italic passage") + 16
+                italicPassage_end = translatedOutput.find("./italic terminator", italicPassage_start)
+                if italicPassage_end == -1:
+                    italicPassage_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:italicPassage_start] + "*" + translatedOutput[italicPassage_start:italicPassage_end].strip() + "*" + translatedOutput[italicPassage_end:]
+                translatedOutput = translatedOutput.replace("./italic passage", "", 1)
+                translatedOutput = translatedOutput.replace("./italic terminator", "", 1)
+            # Numeric indicator: 
             if "./numeric indicator" in  translatedOutput:
                 a_to_n = {"a" : "1", "b" : "2", "c" : "3", "d" : "4", "e" : "5", "f" : "6", "g" : "7", "h" : "8", "i" : "9", "j" : "0"}
                 number_i = translatedOutput.find("./numeric indicator") + 19
