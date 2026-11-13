@@ -47,7 +47,7 @@ def findOutput(whatLong, howLong, fourLong, threeLong, twoLong, oneLong, enabled
             if (
                 i > 0
                 and i + howLong < len(inputarr)
-                and inputarr[i - 1] == "000000" or "capital" in lastOutput
+                and (inputarr[i - 1] == "000000" or "capital" in lastOutput)
                 and inputarr[i + howLong] == "000000"
             ):
                 if contraction_word not in enabled_contractions:
