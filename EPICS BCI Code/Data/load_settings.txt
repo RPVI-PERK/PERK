@@ -1,4 +1,4 @@
 {
     "inverted": true,
-    "current_brailler": null
+    "current_brailler": "Unknown"
 }
