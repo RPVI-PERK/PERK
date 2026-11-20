@@ -274,6 +274,26 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
                 translatedOutput = translatedOutput[:italicPassage_start] + "*" + translatedOutput[italicPassage_start:italicPassage_end].strip() + "*" + translatedOutput[italicPassage_end:]
                 translatedOutput = translatedOutput.replace("./italic passage", "", 1)
                 translatedOutput = translatedOutput.replace("./italic terminator", "", 1)
+            # Bold indicators (Markdown **text**)
+            if "./bold symbol" in translatedOutput:
+                boldSymbol_i = translatedOutput.find("./bold symbol") + 13
+                translatedOutput = translatedOutput[:boldSymbol_i] + "**" + translatedOutput[boldSymbol_i] + "**" + translatedOutput[boldSymbol_i + 1:]
+                translatedOutput = translatedOutput.replace("./bold symbol", "", 1)
+            if "./bold word" in translatedOutput:
+                boldWord_start = translatedOutput.find("./bold word") + 11
+                boldWord_end = translatedOutput.find(" ", boldWord_start)
+                if boldWord_end == -1:
+                    boldWord_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:boldWord_start] + "**" + translatedOutput[boldWord_start:boldWord_end] + "**" + translatedOutput[boldWord_end:]
+                translatedOutput = translatedOutput.replace("./bold word", "", 1)
+            if "./bold passage" in translatedOutput:
+                boldPassage_start = translatedOutput.find("./bold passage") + 14
+                boldPassage_end = translatedOutput.find("./bold terminator", boldPassage_start)
+                if boldPassage_end == -1:
+                    boldPassage_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:boldPassage_start] + "**" + translatedOutput[boldPassage_start:boldPassage_end].strip() + "**" + translatedOutput[boldPassage_end:]
+                translatedOutput = translatedOutput.replace("./bold passage", "", 1)
+                translatedOutput = translatedOutput.replace("./bold terminator", "", 1)
             # Numeric indicator: 
             if "./numeric indicator" in  translatedOutput:
                 a_to_n = {"a" : "1", "b" : "2", "c" : "3", "d" : "4", "e" : "5", "f" : "6", "g" : "7", "h" : "8", "i" : "9", "j" : "0"}
