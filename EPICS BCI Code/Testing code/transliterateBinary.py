@@ -294,6 +294,26 @@ def transliterateBin(inputB, enabled_contractions, brailleLib):
                 translatedOutput = translatedOutput[:boldPassage_start] + "**" + translatedOutput[boldPassage_start:boldPassage_end].strip() + "**" + translatedOutput[boldPassage_end:]
                 translatedOutput = translatedOutput.replace("./bold passage", "", 1)
                 translatedOutput = translatedOutput.replace("./bold terminator", "", 1)
+            # Underline indicators (HTML <u>text</u>)
+            if "./underline symbol" in translatedOutput:
+                underlineSymbol_i = translatedOutput.find("./underline symbol") + 18
+                translatedOutput = translatedOutput[:underlineSymbol_i] + "<u>" + translatedOutput[underlineSymbol_i] + "</u>" + translatedOutput[underlineSymbol_i + 1:]
+                translatedOutput = translatedOutput.replace("./underline symbol", "", 1)
+            if "./underline word" in translatedOutput:
+                underlineWord_start = translatedOutput.find("./underline word") + 16
+                underlineWord_end = translatedOutput.find(" ", underlineWord_start)
+                if underlineWord_end == -1:
+                    underlineWord_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:underlineWord_start] + "<u>" + translatedOutput[underlineWord_start:underlineWord_end] + "</u>" + translatedOutput[underlineWord_end:]
+                translatedOutput = translatedOutput.replace("./underline word", "", 1)
+            if "./underline passage" in translatedOutput:
+                underlinePassage_start = translatedOutput.find("./underline passage") + 19
+                underlinePassage_end = translatedOutput.find("./underline terminator", underlinePassage_start)
+                if underlinePassage_end == -1:
+                    underlinePassage_end = len(translatedOutput)
+                translatedOutput = translatedOutput[:underlinePassage_start] + "<u>" + translatedOutput[underlinePassage_start:underlinePassage_end].strip() + "</u>" + translatedOutput[underlinePassage_end:]
+                translatedOutput = translatedOutput.replace("./underline passage", "", 1)
+                translatedOutput = translatedOutput.replace("./underline terminator", "", 1)
             # Numeric indicator: 
             if "./numeric indicator" in  translatedOutput:
                 a_to_n = {"a" : "1", "b" : "2", "c" : "3", "d" : "4", "e" : "5", "f" : "6", "g" : "7", "h" : "8", "i" : "9", "j" : "0"}
